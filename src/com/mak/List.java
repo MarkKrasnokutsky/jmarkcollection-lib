@@ -1,4 +1,4 @@
 package com.mak;
 
-public interface List {
+public interface List extends Collection{
 }

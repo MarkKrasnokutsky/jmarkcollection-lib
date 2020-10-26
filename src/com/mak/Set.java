@@ -1,4 +1,4 @@
 package com.mak;
 
-public interface Set {
+public interface Set extends Collection{
 }

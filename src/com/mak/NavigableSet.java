@@ -1,105 +1,82 @@
 package com.mak;
 
-public class NavigableSet {
-    private int[] arrayElements;
-    private int index = -1;
+public class NavigableSet extends HashSet {
 
     /**
-     * Возвращает длину массива объектов Entry
+     * Возвращает первый элемент списка
      *
-     * @return длина массива arrayElements
-     */
-    int size() {
-        return arrayElements.length;
+     * @return первый элемент списка
+     **/
+    Entry first() {
+        return super.array[0];
     }
 
     /**
-     * Возвращает текущей элемент массива
+     * Возвращает последний элемент списка
      *
-     * @return метод add с типом хэш-суммы Long и со значение value
-     * @throws ArrayIndexOutOfBoundsException - если мы укажем индекс, которого в массиве не присутствует, выбросится ошибка
-     */
-    int getCurrent() throws ArrayIndexOutOfBoundsException {
-        if (index == -1 || index > arrayElements.length) {
-            throw new ArrayIndexOutOfBoundsException("Выход за пределы массива");
-        }
-        return arrayElements[index];
+     * @return последний элемент списка
+     **/
+    Entry last() {
+        return super.array[super.size() - 1];
     }
 
     /**
-     * Возвращает элемент массива по индексу
+     * Возвращает массив, элементы которого состоят из первых элементов множества до указанного индекса
      *
-     * @param index - индекс элемента в массиве
-     * @return элемент по индексу из массива
-     * @throws ArrayIndexOutOfBoundsException - если мы укажем индекс, которого в массиве не присутствует, выбросится ошибка
-     */
-    int getIndexOf(int index) throws ArrayIndexOutOfBoundsException {
-        if (index == -1 || index > arrayElements.length) {
-            throw new ArrayIndexOutOfBoundsException("Выход за пределы массива");
-        }
-        return arrayElements[index];
-    }
-
-    /**
-     * Добавляет элемент в массив объектов класса Entry
-     *
-     * @param value - значение элемента
-     */
-    void add(int value) {
-        int length = arrayElements.length + 1;
-        int[] arrayTemp = arrayElements.clone();
-        arrayElements = new int[length];
-        for (int i = 0; i < arrayTemp.length; i++) {
-            arrayElements[i] = arrayTemp[i];
-        }
-        arrayElements[arrayTemp.length] = value;
-        index++;
-        for (int i = 0; i < length; i++) {
-            for (int j = i + 1; j < length; j++) {
-                if (arrayElements[j] < arrayElements[i]) {
-                    int temp = arrayElements[j];
-                    arrayElements[j] = arrayElements[i];
-                    arrayElements[i] = temp;
+     * @param end индекс последнего элемента нового массива
+     * @return массив с элементами
+     * @throws ArrayIndexOutOfBoundsException проверка на вхождение индекса
+     **/
+    Entry[] headSet(int end) throws ArrayIndexOutOfBoundsException {
+        if (end >= 0 && end < super.size()) {
+            Entry[] arrayTemp = new Entry[super.size()];
+            for (int i = 0; i < super.size(); i++) {
+                if (i <= end) {
+                    arrayTemp[i] = super.array[i].clone();
                 }
             }
+            return arrayTemp;
         }
+        throw new ArrayIndexOutOfBoundsException("Указанный индекс за пределами массива");
     }
 
-    int first() {
-        return arrayElements[0];
-    }
-
-    int last() {
-        return arrayElements[arrayElements.length - 1];
-    }
-
-    int[] headSet(int end) {
-        int[] arrayTemp = new int[arrayElements.length];
-        for (int i = 0; i < arrayElements.length; i++) {
-            if (arrayElements[i] <= end) {
-                arrayTemp[i] = arrayElements[i];
+    /**
+     * Возвращает массив, элементы которого начинаются с указанного стартового индекса до указанного конечного индекса
+     *
+     * @param start индекс первого элемента нового массива
+     * @param end   индекс последнего элемента нового массива
+     * @return массив с элементами
+     * @throws ArrayIndexOutOfBoundsException проверка на вхождение индекса
+     **/
+    Entry[] subSet(int start, int end) throws ArrayIndexOutOfBoundsException {
+        if ((end >= 0 && end < super.size()) && (start >= 0 && start < super.size())) {
+            Entry[] arrayTemp = new Entry[super.size()];
+            for (int i = 0; i < super.size(); i++) {
+                if (i >= start && i <= end) {
+                    arrayTemp[i] = super.array[i].clone();
+                }
             }
+            return arrayTemp;
         }
-        return arrayTemp;
+        throw new ArrayIndexOutOfBoundsException("Указанные индексы за пределами массива");
     }
 
-    int[] subSet(int start, int end) {
-        int[] arrayTemp = new int[arrayElements.length];
-        for (int i = 0; i < arrayElements.length; i++) {
-            if (arrayElements[i] >= start && arrayElements[i] <= end) {
-                arrayTemp[i] = arrayElements[i];
+    /**
+     * Возвращает массив, элементы которого начинаются с указанного стартового индекса до конечноого индекса массива
+     *
+     * @param start индекс первого элемента нового массива
+     * @return массив с элементами
+     **/
+    Entry[] tailSet(int start) throws ArrayIndexOutOfBoundsException {
+        if (start >= 0 && start < super.size()) {
+            Entry[] arrayTemp = new Entry[super.size()];
+            for (int i = 0; i < super.size(); i++) {
+                if (i >= start) {
+                    arrayTemp[i] = super.array[i].clone();
+                }
             }
+            return arrayTemp;
         }
-        return arrayTemp;
-    }
-
-    int[] tailSet(int start) {
-        int[] arrayTemp = new int[arrayElements.length];
-        for (int i = 0; i < arrayElements.length; i++) {
-            if (arrayElements[i] >= start) {
-                arrayTemp[i] = arrayElements[i];
-            }
-        }
-        return arrayTemp;
+        throw new ArrayIndexOutOfBoundsException("Указанный индекс за пределами массива");
     }
 }

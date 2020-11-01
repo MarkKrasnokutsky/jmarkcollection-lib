@@ -7,7 +7,8 @@ public class SortedSet extends HashSet {
      *
      * @param value - значение элемента
      */
-    boolean add(int value) {
+    @Override
+    public boolean add(int value) {
         boolean result = super.add(value);
         int length = super.size();
         if (result) {

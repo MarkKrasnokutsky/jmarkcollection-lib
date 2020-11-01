@@ -1,12 +1,10 @@
 package com.mak;
 
-import java.util.Random;
-
 /**
  * Класс реализует функционал HashSet, работает с массивом объектов Entry так, что для обычного пользователя класс Entry сокрытый
  * Обобщенный класс
  */
-public class HashSet {
+public class HashSet implements Set {
     protected Entry[] array = new Entry[0];
     private int index = -1;
 
@@ -25,7 +23,8 @@ public class HashSet {
      *
      * @return длина массива array
      */
-    int size() {
+    @Override
+    public int size() {
         return array.length;
     }
 
@@ -35,7 +34,8 @@ public class HashSet {
      * @return метод add с типом хэш-суммы Long и со значение value
      * @throws ArrayIndexOutOfBoundsException - если мы укажем индекс, которого в массиве не присутствует, выбросится ошибка
      */
-    Entry getCurrent() throws ArrayIndexOutOfBoundsException {
+    @Override
+    public Entry getCurrent() throws ArrayIndexOutOfBoundsException {
         if (index == -1 || index > array.length) {
             throw new ArrayIndexOutOfBoundsException("Выход за пределы массива");
         }
@@ -49,7 +49,8 @@ public class HashSet {
      * @return элемент по индексу из массива
      * @throws ArrayIndexOutOfBoundsException - если мы укажем индекс, которого в массиве не присутствует, выбросится ошибка
      */
-    Entry getIndexOf(int index) throws ArrayIndexOutOfBoundsException {
+    @Override
+    public Entry getIndexOf(int index) throws ArrayIndexOutOfBoundsException {
         if (index == -1 || index > array.length) {
             throw new ArrayIndexOutOfBoundsException("Выход за пределы массива");
         }
@@ -61,7 +62,8 @@ public class HashSet {
      *
      * @param value - значение элемента
      */
-    boolean add(int value) {
+    @Override
+    public boolean add(int value) {
         boolean result = true;
         for (Entry element : array) {
             if (value == element.getValue()) {

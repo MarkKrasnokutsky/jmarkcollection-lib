@@ -1,9 +1,8 @@
 package com.mak;
 
 public interface Collection {
-    void size();
-    void show();
+    int size();
     Object getIndexOf(int index);
     Object getCurrent();
-    void add(Object value);
+    boolean add(int value);
 }

@@ -5,4 +5,8 @@ public interface Collection {
     Object getIndexOf(int index);
     Object getCurrent();
     boolean add(int value);
+    boolean isEmpty();
+    @Override
+    int hashCode();
+    Object[] toArray();
 }

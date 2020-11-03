@@ -1,6 +1,12 @@
 package com.mak;
 
+/**
+ * Обобщенний класс ArrayList
+ **/
 public class ArrayList <T> {
+    /**
+     * Массив элементов типа Object
+     **/
     private Object[] array;
 
     @SafeVarargs
@@ -13,14 +19,28 @@ public class ArrayList <T> {
         }
     }
 
+    /**
+     * Возвращает длину связанного списка
+     * @return Длина списка
+     **/
     public int size() {
         return array.length;
     }
 
+    /**
+     * Возвращает элемент списка по индексу
+     * @param index Индекс списка
+     * @return Элемент списка по индексу
+     **/
     public Object getElement(int index) {
         return array[index];
     }
 
+     /**
+      * Проверка на существование элемента в списке
+      * @param element Элемент списка
+      * @return булевое значение
+     **/
     public boolean find(T element) {
         for (Object i: array) {
             if (i == element) {
@@ -30,6 +50,9 @@ public class ArrayList <T> {
         return false;
     }
 
+    /**
+     * Удаляет последний по индексу элемент списка
+     **/
     public void removeElementLastIndex() {
         Object[] arrayTemp = array.clone();
         array = new Object[array.length - 1];
@@ -38,6 +61,10 @@ public class ArrayList <T> {
         }
     }
 
+    /**
+     * Добавляет элемент в конец списка
+     * @param element Добавляемый элемент
+     **/
     public void addElementLastIndex(T element) {
         int length = array.length + 1;
         Object[] arrayTemp = array.clone();

@@ -1,13 +1,14 @@
 package com.mak;
 
-public class NavigableSet extends HashSet {
+public class NavigableSet extends HashSet implements Navigable {
 
     /**
      * Возвращает первый элемент списка
      *
      * @return первый элемент списка
      **/
-    Entry first() {
+    @Override
+    public Entry first() {
         return super.array[0];
     }
 
@@ -16,7 +17,8 @@ public class NavigableSet extends HashSet {
      *
      * @return последний элемент списка
      **/
-    Entry last() {
+    @Override
+    public Entry last() {
         return super.array[super.size() - 1];
     }
 
@@ -27,7 +29,8 @@ public class NavigableSet extends HashSet {
      * @return массив с элементами
      * @throws ArrayIndexOutOfBoundsException проверка на вхождение индекса
      **/
-    Entry[] headSet(int end) throws ArrayIndexOutOfBoundsException {
+    @Override
+    public Entry[] headSet(int end) throws ArrayIndexOutOfBoundsException {
         if (end >= 0 && end < super.size()) {
             Entry[] arrayTemp = new Entry[super.size()];
             for (int i = 0; i < super.size(); i++) {
@@ -48,7 +51,8 @@ public class NavigableSet extends HashSet {
      * @return массив с элементами
      * @throws ArrayIndexOutOfBoundsException проверка на вхождение индекса
      **/
-    Entry[] subSet(int start, int end) throws ArrayIndexOutOfBoundsException {
+    @Override
+    public Entry[] subSet(int start, int end) throws ArrayIndexOutOfBoundsException {
         if ((end >= 0 && end < super.size()) && (start >= 0 && start < super.size())) {
             Entry[] arrayTemp = new Entry[super.size()];
             for (int i = 0; i < super.size(); i++) {
@@ -67,7 +71,8 @@ public class NavigableSet extends HashSet {
      * @param start индекс первого элемента нового массива
      * @return массив с элементами
      **/
-    Entry[] tailSet(int start) throws ArrayIndexOutOfBoundsException {
+    @Override
+    public Entry[] tailSet(int start) throws ArrayIndexOutOfBoundsException {
         if (start >= 0 && start < super.size()) {
             Entry[] arrayTemp = new Entry[super.size()];
             for (int i = 0; i < super.size(); i++) {

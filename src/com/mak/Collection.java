@@ -1,9 +1,15 @@
 package com.mak;
 
 public interface Collection {
-    void size();
-    void show();
-    Object getIndexOf(int index);
-    Object getCurrent();
-    void add(Object value);
+    int size();
+
+    Entry getIndexOf(int index);
+
+    Entry getCurrent();
+
+    boolean add(int value);
+
+    boolean isEmpty();
+
+    int[] toArray();
 }

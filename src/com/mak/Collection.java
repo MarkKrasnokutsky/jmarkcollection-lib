@@ -2,11 +2,14 @@ package com.mak;
 
 public interface Collection {
     int size();
-    Object getIndexOf(int index);
-    Object getCurrent();
+
+    Entry getIndexOf(int index);
+
+    Entry getCurrent();
+
     boolean add(int value);
+
     boolean isEmpty();
-    @Override
-    int hashCode();
-    Object[] toArray();
+
+    int[] toArray();
 }

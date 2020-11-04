@@ -1,4 +1,4 @@
-package com.mak;
+package com.mak.common;
 
 public interface Collection {
     int size();

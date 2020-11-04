@@ -1,4 +1,6 @@
-package com.mak;
+package com.mak.set;
+
+import com.mak.common.Entry;
 
 public interface Navigable {
     Entry first();

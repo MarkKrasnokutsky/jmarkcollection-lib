@@ -1,4 +1,4 @@
-package com.mak;
+package com.mak.list;
 
 /**
  * Обобщенний класс ArrayList

@@ -1,4 +1,4 @@
-package com.mak;
+package com.mak.list;
 
 /**
  * Класс LinkedList - Связанный список

@@ -1,4 +1,6 @@
-package com.mak;
+package com.mak.set;
+
+import com.mak.common.Entry;
 
 /**
  * Класс реализует функционал HashSet, работает с массивом объектов Entry так, что для обычного пользователя класс Entry сокрытый

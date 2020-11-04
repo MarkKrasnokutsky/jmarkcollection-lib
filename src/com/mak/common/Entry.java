@@ -1,4 +1,4 @@
-package com.mak;
+package com.mak.common;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

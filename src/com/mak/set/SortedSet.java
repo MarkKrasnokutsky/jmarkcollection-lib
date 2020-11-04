@@ -1,4 +1,6 @@
-package com.mak;
+package com.mak.set;
+
+import com.mak.set.HashSet;
 
 public class SortedSet extends HashSet {
 

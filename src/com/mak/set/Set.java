@@ -1,4 +1,6 @@
-package com.mak;
+package com.mak.set;
+
+import com.mak.common.Collection;
 
 public interface Set extends Collection {
 

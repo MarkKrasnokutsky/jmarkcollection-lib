@@ -61,6 +61,7 @@ public class HashSet implements Set {
      * Добавляет элемент в массив объектов класса Entry
      *
      * @param value - значение элемента
+     * @return Истина - добавлен в коллекцию, Ложь - не добавлен в коллекцию
      */
     @Override
     public boolean add(int value) {
@@ -83,4 +84,69 @@ public class HashSet implements Set {
         }
         return result;
     }
+
+    /**
+     * Проверка на существование массива
+     *
+     * @return Истина - массив пустой, Ложь - массив не пустой
+     */
+    @Override
+    public boolean isEmpty() {
+        if (array.length == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Преобразование коллекции в массив
+     *
+     * @return Массив с целочисленными значениями
+     */
+    @Override
+    public int[] toArray() {
+        int[] arrayInt = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            arrayInt[i] = getIndexOf(i).getValue();
+        }
+        return arrayInt;
+    }
+
+    /**
+     * Сортировка коллекции (пузырьковкая)
+     */
+    @Override
+    public void sort() {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j].getValue() < array[i].getValue()) {
+                    int temp = array[j].getValue();
+                    array[j].setValue(array[i].getValue());
+                    array[i].setValue(temp);
+                }
+            }
+        }
+    }
+
+    /**
+     * Сравнение двух коллекций
+     * @param set Вторая коллекция, реализующая интерфейс Set
+     * @return Истина - коллекции равны, Ложь - коллекции не равны
+     */
+    @Override
+    public boolean equals(Set set) {
+        if (array.length != set.size()) {
+            return false;
+        }
+        boolean isEquals = false;
+        sort();
+        set.sort();
+        for (int i = 0; i < array.length; i++) {
+            if (set.getIndexOf(i).getValue() == array[i].getValue()) {
+                isEquals = true;
+            }
+        }
+        return isEquals;
+    }
+
 }

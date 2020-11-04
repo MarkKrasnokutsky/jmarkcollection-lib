@@ -1,8 +1,9 @@
 package com.mak;
 
-public interface List extends Collection{
-    Object getIndexOf(int index);
+public interface List extends Collection {
+    Entry getIndexOf(int index);
+
     void add(Object value);
-    @Override
-    boolean equals(Object o);
+
+    boolean equals(List list);
 }

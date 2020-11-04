@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class Entry implements Cloneable {
     private String hashCode;
-    int value;
+    private int value;
 
     public Entry(int value) {
         this.value = value;

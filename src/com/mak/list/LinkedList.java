@@ -7,7 +7,7 @@ public class LinkedList {
     /**
      * Массив для работы с данными
      **/
-    private Entry[] arrayString = new Entry[0];
+    private Entry[] array = new Entry[0];
     private int index = -1; // Текущий индекс массива
 
     /**
@@ -15,7 +15,7 @@ public class LinkedList {
      * @return Длина списка
      **/
     int size() {
-        return arrayString.length;
+        return array.length;
     }
 
     /**
@@ -23,7 +23,7 @@ public class LinkedList {
      * @return Текущий элемент списка
      **/
     Entry getCurrent() {
-        return arrayString[index];
+        return array[index];
     }
 
     /**
@@ -32,7 +32,7 @@ public class LinkedList {
      * @return Элемент списка по индексу
      **/
     Entry getIndexOf(int index) {
-        return arrayString[index];
+        return array[index];
     }
 
     /**
@@ -40,11 +40,11 @@ public class LinkedList {
      * @param value добавляемый элемент
      **/
     void add(String value) {
-        int length = arrayString.length + 1;
-        Entry[] arrayTemp = arrayString.clone();
-        arrayString = new Entry[length];
-        System.arraycopy(arrayTemp, 0, arrayString, 0, arrayTemp.length);
-        arrayString[arrayTemp.length] = new Entry(value);
+        int length = array.length + 1;
+        Entry[] arrayTemp = array.clone();
+        array = new Entry[length];
+        System.arraycopy(arrayTemp, 0, array, 0, arrayTemp.length);
+        array[arrayTemp.length] = new Entry(value);
         index++;
     }
 
@@ -98,7 +98,7 @@ public class LinkedList {
          **/
         Entry previous() {
             try {
-                return arrayString[index - 1];
+                return array[index - 1];
             } catch (ArrayIndexOutOfBoundsException ex) {
                 return null;
             }
@@ -109,7 +109,7 @@ public class LinkedList {
          **/
         Entry next() {
             try {
-                return arrayString[index + 1];
+                return array[index + 1];
             } catch (ArrayIndexOutOfBoundsException ex) {
                 return null;
             }

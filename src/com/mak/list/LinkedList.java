@@ -3,7 +3,7 @@ package com.mak.list;
 /**
  * Класс LinkedList - Связанный список
  **/
-public class LinkedList {
+public class LinkedList implements List {
     /**
      * Массив для работы с данными
      **/
@@ -12,14 +12,34 @@ public class LinkedList {
 
     /**
      * Возвращает длину связанного списка
+     *
      * @return Длина списка
      **/
-    int size() {
+    @Override
+    public int size() {
         return array.length;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        if (array.length == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int[] toArray() {
+        int[] arrayInt = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            arrayInt[i] = getIndexOf(i).getValue();
+        }
+        return arrayInt;
     }
 
     /**
      * Возвращает текущий элемент списка
+     *
      * @return Текущий элемент списка
      **/
     Entry getCurrent() {
@@ -28,6 +48,7 @@ public class LinkedList {
 
     /**
      * Возвращает элемент списка по введённому списку
+     *
      * @param index Индекс элемента списка
      * @return Элемент списка по индексу
      **/
@@ -37,9 +58,11 @@ public class LinkedList {
 
     /**
      * Добавление элемента в список
+     *
      * @param value добавляемый элемент
      **/
-    void add(String value) {
+    @Override
+    public void add(int value) {
         int length = array.length + 1;
         Entry[] arrayTemp = array.clone();
         array = new Entry[length];
@@ -50,6 +73,7 @@ public class LinkedList {
 
     /**
      * Вовзращает предыдущий элемент от текущего из списка
+     *
      * @return Предыдущий элемент от текущего из списка
      **/
     String previous() {
@@ -66,6 +90,7 @@ public class LinkedList {
 
     /**
      * Вовзращает следущий элемент от текущего из списка
+     *
      * @return Следущий элемент от текущего из списка
      **/
     String next() {
@@ -87,10 +112,10 @@ public class LinkedList {
         /**
          * Значение элемента в списке
          **/
-        private final String s;
+        private final int value;
 
-        public Entry(String s) {
-            this.s = s;
+        public Entry(int value) {
+            this.value = value;
         }
 
         /**
@@ -115,14 +140,8 @@ public class LinkedList {
             }
         }
 
-        /**
-         * Переопределенный метод toString()
-         * @return Текущий элемент списка (объекта класса Entry)
-         **/
-        @Override
-        public String toString() {
-            return this.s;
+        public int getValue() {
+            return this.value;
         }
-
     }
 }

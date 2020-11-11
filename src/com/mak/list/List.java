@@ -2,9 +2,8 @@ package com.mak.list;
 
 import com.mak.common.Collection;
 
-public interface List<E> extends Collection {
+public interface List extends Collection {
 
-    void add(E value);
+    void add(int value);
 
-    boolean equals(List<E> list);
 }

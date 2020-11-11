@@ -11,4 +11,6 @@ public interface Set extends Collection {
     Entry getIndexOf(int index);
 
     Entry getCurrent();
+
+    boolean add(int value);
 }

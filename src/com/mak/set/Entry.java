@@ -1,10 +1,10 @@
-package com.mak.common;
+package com.mak.set;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Entry implements Cloneable {
+class Entry implements Cloneable {
     private String hashCode;
     private int value;
 
@@ -15,7 +15,7 @@ public class Entry implements Cloneable {
 
     @Override
     public Entry clone() {
-        return new Entry(this.value);
+        return new Entry(this.getValue());
     }
 
     /**

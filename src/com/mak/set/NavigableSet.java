@@ -1,7 +1,5 @@
 package com.mak.set;
 
-import com.mak.common.Entry;
-
 public class NavigableSet extends HashSet implements Navigable {
 
     /**

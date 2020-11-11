@@ -7,4 +7,8 @@ public interface Set extends Collection {
     void sort();
 
     boolean equals(Set set);
+
+    Entry getIndexOf(int index);
+
+    Entry getCurrent();
 }
